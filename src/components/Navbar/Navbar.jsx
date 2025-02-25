@@ -96,6 +96,13 @@ import { useState } from "react";
 // export default MyNavbar;
 
 export default function Navbar() {
+  const [openDropdown, setOpenDropdown] = useState(null);
+
+  const toggleDropdown = (menu) => (e) => {
+    e.preventDefault(); // Prevent unwanted behavior
+    setOpenDropdown(openDropdown === menu ? null : menu); // Toggle only the clicked dropdown
+  };
+
   return (
     <>
       <div className="container">
@@ -106,13 +113,60 @@ export default function Navbar() {
           <nav>
             <ul>
               <li className="movies">
-                <a href="">Movies</a>
+                <a href="#" onClick={toggleDropdown("movies")}>
+                  Movies ▼
+                </a>
+                {/* DropDown Menu */}
+                <ul
+                  className={
+                    openDropdown === "movies"
+                      ? "DropDownMenu open"
+                      : "DropDownMenu"
+                  }
+                >
+                  <li>
+                    <a href="">Now Playing</a>
+                  </li>
+                  <li>
+                    <a href="">Popular</a>
+                  </li>
+                  <li>
+                    <a href="">Top Rated</a>
+                  </li>
+                  <li>
+                    <a href="">Upcoming</a>
+                  </li>
+                </ul>
               </li>
+
               <li className="actors">
                 <a href="">Actors</a>
               </li>
               <li className="TVshows">
-                <a href="">TV Shows</a>
+                <a href="#" onClick={toggleDropdown("TVshows")}>
+                  TV Shows ▼
+                </a>
+                {/*TVshows DropDown Menu */}
+                <ul
+                  className={
+                    openDropdown === "TVshows"
+                      ? "DropDownMenu open"
+                      : "DropDownMenu"
+                  }
+                >
+                  <li>
+                    <a href="">Airing Today</a>
+                  </li>
+                  <li>
+                    <a href="">On TV</a>
+                  </li>
+                  <li>
+                    <a href="">Popular</a>
+                  </li>
+                  <li>
+                    <a href="">Top Rated</a>
+                  </li>
+                </ul>
               </li>
               <li className="search-bar">
                 <form action="">

@@ -35,6 +35,10 @@
 
 
 /* Navigation */
+.nav-container{
+  width: 100%;
+}
+
 nav ul {
   justify-content: center;
   list-style: none;
@@ -74,6 +78,7 @@ nav ul li a:hover {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   padding: 5px;
+  width: -webkit-fill-available;
 }
 
 .search-bar input {
@@ -82,7 +87,7 @@ nav ul li a:hover {
   padding: 8px;
   background: transparent;
   color: white;
-  width: 150px;
+  width: -webkit-fill-available;
 }
 
 .search-bar input::placeholder {
@@ -102,11 +107,7 @@ nav ul li a:hover {
 .search-bar button:hover {
   background: #e67e22;
 }
-.movies a {
-  display: inline-flex; /* Align text and icon horizontally */
-  align-items: center; /* Vertically center the icon with the text */
-  gap: 5px; /* Space between text and icon */
-}
+
 
 /* Style the dropdown menu */
 .DropDownMenu {
@@ -121,6 +122,7 @@ nav ul li a:hover {
   border-radius: 5px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   min-width: 150px;
+  width: 100%;
   z-index: 100;
 }
 

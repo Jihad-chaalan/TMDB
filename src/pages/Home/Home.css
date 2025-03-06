@@ -1,0 +1,23 @@
+.Home-container{
+}
+.Welcome-section {
+    /* color: #f39c12; */
+    text-align: center; /* Center-align the heading */
+    /* margin-top: 30px;  */
+    margin-bottom: 30px; /* Add space at the bottom */
+    padding: 0 20px; /* Optional: add some horizontal padding */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Light shadow for a subtle effect */
+    background-image: url('../../assets/Welcome.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white; /* Ensure text contrasts well with the background */
+    text-align: center;
+    padding: 30px 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+
+
+  
+  

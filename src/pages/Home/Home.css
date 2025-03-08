@@ -16,6 +16,49 @@
     position: relative;
     z-index: 1;
   }
+  .TM-header {
+    background-color: #f5b041;
+    padding: 2px;
+    font-size: 1.5rem;
+    color: #b9770e;
+    text-align: left;
+    margin: 2rem;
+    font-weight: bold;
+    position: relative;
+    border: 2px solid;
+    border-radius: 8px;
+    width: fit-content;
+  }
+
+  .movies-list{
+    align-items: center;
+    justify-content: center;
+    flex-flow: wrap;
+    margin: 5px;
+    padding: 0;
+    list-style: none;
+    display: flex
+;
+    gap: 55px;
+  }
+  .movie-item{
+    width: 200px;
+  }
+  .movie-title {
+    color: #f39c12; /* Orange Peel */
+    font-size: 1.2rem;
+    margin: 10px 0;
+    padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .movie-title:hover {
+    color: #ff4757; /* Bright Red */
+  }
+  
+  
 
 
 

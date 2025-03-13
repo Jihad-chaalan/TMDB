@@ -30,16 +30,22 @@
     width: fit-content;
   }
 
+  .movies-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 15px;
+  }
+
   .movies-list{
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-flow: wrap;
     margin: 5px;
     padding: 0;
     list-style: none;
-    display: flex
-;
-    gap: 55px;
+    display: flex;
+    width: -webkit-fill-available;
   }
   .movie-item{
     width: 200px;
@@ -56,6 +62,32 @@
   
   .movie-title:hover {
     color: #ff4757; /* Bright Red */
+  }
+
+  .scroll-button {
+    background: #f39c12; /* Use a bold background color */
+    color: white; /* White text for contrast */
+    border: 2px solid #b9770e; /* Border to match header */
+    border-radius: 50%; /* Circular buttons */
+    padding: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .scroll-button:hover {
+    background: #ff4757; /* Change background color on hover */
+    border-color: #ff4757; /* Border color matches the hover background */
+    transform: scale(1.1); /* Slightly enlarge the button on hover */
+  }
+  
+  .scroll-button:disabled {
+    background: #bdc3c7; /* Light gray when disabled */
+    cursor: not-allowed;
+    border-color: #95a5a6; /* Lighter border */
   }
   
   

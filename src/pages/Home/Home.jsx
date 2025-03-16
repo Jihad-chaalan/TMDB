@@ -1,28 +1,52 @@
-// src/pages/Home.jsx
 import { useEffect, useState } from "react";
 import { fetchTrendingMovies } from "../../util/API.js";
 import "../Home/Home.css";
 import videoIconRight from "../../assets/iconsRight.svg";
 import videoIconLeft from "../../assets/iconsLeft.svg";
+
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [moviesPerPage, setMoviesPerPage] = useState(4); // Default 4
 
   const getMovies = async () => {
     const movieData = await fetchTrendingMovies();
     setMovies(movieData);
   };
 
-  const displayedMovies = movies.slice(currentIndex, currentIndex + 4);
-
-  console.log(currentIndex);
-
   useEffect(() => {
     getMovies();
   }, []);
 
+  // Function to update moviesPerPage based on screen width
+  useEffect(() => {
+    const updateMoviesPerPage = () => {
+      if (window.innerWidth <= 600) {
+        setMoviesPerPage(1); // Mobile
+      } else if (window.innerWidth <= 820) {
+        setMoviesPerPage(2); // Tablets
+      } else if (window.innerWidth <= 1024) {
+        setMoviesPerPage(3);
+      } else if (window.innerWidth <= 1260) {
+        setMoviesPerPage(4);
+      } else {
+        setMoviesPerPage(5);
+      }
+    };
+
+    updateMoviesPerPage(); // Set on initial load
+
+    window.addEventListener("resize", updateMoviesPerPage);
+    return () => window.removeEventListener("resize", updateMoviesPerPage);
+  }, []);
+
+  const displayedMovies = movies.slice(
+    currentIndex,
+    currentIndex + moviesPerPage
+  );
+
   const handleNext = () => {
-    if (currentIndex + 4 < movies.length) {
+    if (currentIndex + moviesPerPage < movies.length) {
       setCurrentIndex(currentIndex + 1);
     }
   };

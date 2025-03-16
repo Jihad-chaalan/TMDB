@@ -50,8 +50,8 @@
   .movie-item{
     width: 200px;
   }
-  .movie-title {
-    color: #f39c12; /* Orange Peel */
+  /* .movie-title {
+    color: #f39c12; 
     font-size: 1.2rem;
     margin: 10px 0;
     padding: 5px;
@@ -61,8 +61,29 @@
   }
   
   .movie-title:hover {
-    color: #ff4757; /* Bright Red */
+    color: #ff4757;
+  } */
+  .movie-title {
+    color: #f39c12; /* Orange Peel */
+    font-size: 1.4rem; /* Slightly larger font for better readability */
+    font-weight: bold; /* Make the title stand out */
+    margin: 10px 0; /* Space around the title */
+    padding: 0 5px; /* Horizontal padding to prevent text touching the edges */
+    text-align: center; /* Center-align the title */
+    white-space: nowrap; /* Prevent text from wrapping to the next line */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Display ellipsis (…) for overflowing text */
+    line-height: 1.4; /* Adjust line-height for better spacing */
+    font-family: 'Arial', sans-serif; /* Ensure a clean and modern font */
+    transition: color 0.3s ease, transform 0.2s ease; /* Add smooth hover effect */
   }
+  
+  /* Add a hover effect for interactivity */
+  .movie-title:hover {
+    color: #ff4757; /* Change color on hover */
+    transform: scale(1.05); /* Slightly enlarge the title */
+  }
+  
 
   .scroll-button {
     background: #f39c12; /* Use a bold background color */

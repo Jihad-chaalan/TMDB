@@ -77,6 +77,7 @@
     font-family: 'Arial', sans-serif; /* Ensure a clean and modern font */
     transition: color 0.3s ease, transform 0.2s ease; /* Add smooth hover effect */
   }
+
   
   /* Add a hover effect for interactivity */
   .movie-title:hover {
@@ -98,6 +99,12 @@
     justify-content: center;
     align-items: center;
   }
+
+ .movie-releaseDate {
+    text-align: center;
+    color: #ff47578a;
+  }
+
   
   .scroll-button:hover {
     background: #ff4757; /* Change background color on hover */

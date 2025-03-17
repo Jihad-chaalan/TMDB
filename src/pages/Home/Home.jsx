@@ -75,22 +75,32 @@ const Home = () => {
         <h1 className="TM-header">Trending Movies</h1>
         {movies.length > 0 ? (
           <div className="movies-container">
-            <button className="scroll-button prev" onClick={handlePrev}>
+            <button
+              className="scroll-button prev"
+              onClick={handlePrev}
+              disabled={currentIndex === 0}
+            >
               <img src={videoIconLeft} alt="cinema-" />
             </button>
             <ul className="movies-list">
               {displayedMovies.map((movie) => (
                 <li key={movie.id} className="movie-item">
                   <img
+                    className="movie-poster"
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title}
                     style={{ width: "200px", borderRadius: "10px" }}
                   />
                   <p className="movie-title">{movie.title}</p>
+                  <p className="movie-releaseDate">{movie.release_date}</p>
                 </li>
               ))}
             </ul>
-            <button className="scroll-button next" onClick={handleNext}>
+            <button
+              className="scroll-button next"
+              onClick={handleNext}
+              disabled={currentIndex + moviesPerPage >= movies.length}
+            >
               <img src={videoIconRight} alt="cinema-" />
             </button>
           </div>

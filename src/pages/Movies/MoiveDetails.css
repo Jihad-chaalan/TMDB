@@ -1,0 +1,100 @@
+/* Style the Movie Details Page */
+.movie-details {
+    background-color: #2d2d2d;
+    color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Title Style */
+  /* Enhanced Title Styling */
+.movie-details h1 {
+    font-size: 3rem; /* Larger font size for prominence */
+    color: #fff;
+    text-transform: uppercase; /* Make the title uppercase */
+    letter-spacing: 2px; /* Increase space between letters */
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #ff4081, #ffdd57); /* Gradient effect */
+    -webkit-background-clip: text; /* Apply the gradient only to the text */
+    background-clip: text;
+    color: transparent; /* Make text color transparent so the gradient shows */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Soft shadow for depth */
+    padding: 5px 15px; /* Add some padding around the title for spacing */
+  }
+  
+  /* Image Style */
+  .movie-details img {
+    width: 100%;
+    max-width: 350px; /* Image width */
+    height: auto;
+    border-radius: 10px;
+    margin-right: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Information and Rating Section */
+  .movie-info {
+    max-width: 600px; /* Limit the width of the info section */
+    text-align: left;
+    flex-grow: 1; /* Allow the info section to grow and take available space */
+  }
+  
+  /* Movie Overview and Details */
+  .movie-info p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-family: 'Helvetica', sans-serif;
+    text-align: justify;
+  }
+  
+  /* Release Date and Rating */
+  .movie-info p strong {
+    color: #ff4081;
+  }
+  
+  /* Rating Style */
+  .movie-info .rating {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #ffdd57;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .movie-details {
+      padding: 20px;
+      flex-direction: column; /* Stack image and info vertically on smaller screens */
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .movie-details img {
+      max-width: 100%; /* Image takes full width on small screens */
+      margin-right: 0; /* Remove margin to make space */
+      margin-bottom: 20px; /* Add space below the image */
+    }
+  
+    .movie-info {
+      max-width: 100%; /* Allow the info section to take full width on small screens */
+    }
+  
+    .movie-details h1 {
+      font-size: 2rem;
+    }
+  
+    .movie-info p {
+      font-size: 1rem;
+    }
+  }
+  

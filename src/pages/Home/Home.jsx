@@ -12,7 +12,12 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleMovieClick = (movieId) => {
-    navigate(`/movie/${movieId}`); // Navigate to movie details page
+    // Add a fade-out effect before navigating
+    const container = document.querySelector(".movies-container");
+    container.style.opacity = 0; // Start fading out
+    setTimeout(() => {
+      navigate(`/movie/${movieId}`); // Navigate after the fade-out
+    }, 500); // Wait for the transition to finish
   };
 
   const getMovies = async () => {

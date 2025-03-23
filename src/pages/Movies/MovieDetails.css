@@ -33,7 +33,7 @@
   }
   
   /* Image Style */
-  .movie-details img {
+  .Movie-Poster{
     width: 100%;
     max-width: 350px; /* Image width */
     height: auto;
@@ -79,7 +79,7 @@
       justify-content: center;
     }
   
-    .movie-details img {
+    .Movie-Poster {
       max-width: 100%; /* Image takes full width on small screens */
       margin-right: 0; /* Remove margin to make space */
       margin-bottom: 20px; /* Add space below the image */
@@ -96,5 +96,58 @@
     .movie-info p {
       font-size: 1rem;
     }
+  }
+
+  .trailer-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%; /* Adjust width to your preference */
+    max-width: 800px; /* Max width for large screens */
+  }
+  
+  .trailer-container iframe {
+    width: 100%;
+    height: 450px; /* Adjust iframe height as needed */
+  }
+  
+  button {
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #ddd;
+  }
+  .close-trailer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    color: #fff;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  .close-trailer:hover {
+    color: red;
+  }
+
+  .Play-Image{
+
   }
   

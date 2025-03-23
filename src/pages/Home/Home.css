@@ -35,6 +35,8 @@
     justify-content: center;
     align-items: center;
     margin: 0 15px;
+
+    transition: opacity 0.5s ease-in-out;
   }
 
   .movies-list{
@@ -49,6 +51,10 @@
   }
   .movie-item{
     width: 200px;
+    transition: transform 0.3s ease;
+  }
+  .movie-item:active {
+    transform: scale(0.98);
   }
   /* .movie-title {
     color: #f39c12; 

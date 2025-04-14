@@ -17,8 +17,6 @@ const MovieDetails = () => {
     getMovieDetails();
   }, [id]); // Added `id` to dependencies
 
-  if (!selectedMovie) return <p>Loading...</p>;
-
   // Toggle trailer visibility
   const toggleTrailer = () => {
     setShowTrailer(!showTrailer);
@@ -29,6 +27,18 @@ const MovieDetails = () => {
     setShowTrailer(false);
   };
 
+  if (!selectedMovie) {
+    return (
+      <div className="movie-details loading">
+        <div className="Movie-Poster skeleton-box"></div>
+        <div className="movie-info">
+          <h1 className="skeleton-box" style={{ width: "50%" }}></h1>
+          <p className="skeleton-box" style={{ width: "80%" }}></p>
+          <p className="skeleton-box" style={{ width: "60%" }}></p>
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="movie-details">
       {/* Movie Poster */}

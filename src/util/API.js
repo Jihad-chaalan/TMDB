@@ -8,6 +8,39 @@ const options = {
   },
 };
 
+// export const fetchPopularActor = async () => {
+//   const url =
+//     "https://api.themoviedb.org/3/person/popular?language=en-US&page=1";
+//   try {
+//     const response = await fetch(url, options);
+//     if (!response.ok) {
+//       throw new Error(`HTTP error! Status: ${response.status}`);
+//     }
+//     const data = await response.json();
+//     return data.results;
+//   } catch (error) {
+//     console.error("Error fetching movies:", error);
+//     return [];
+//   }
+// };
+export const fetchPopularActor = async (page = 1) => {
+  const url = `https://api.themoviedb.org/3/person/popular?language=en-US&page=${page}`;
+
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+
+    // Return the entire data object including total_pages
+    return data;
+  } catch (error) {
+    console.error("Error fetching actors:", error);
+    return { results: [], total_pages: 0 };
+  }
+};
+
 // Function to fetch trending movies
 export const fetchTrendingMovies = async () => {
   const url = "https://api.themoviedb.org/3/trending/movie/week?language=en-US";
@@ -23,29 +56,7 @@ export const fetchTrendingMovies = async () => {
     return [];
   }
 };
-// Function to fetch movie details
-// export const fetchMovieDetails = async (movieId) => {
-//   if (!movieId) {
-//     console.error("fetchMovieDetails: No movie ID provided.");
-//     return null;
-//   }
 
-//   try {
-//     const response = await fetch(
-//       `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
-//       options
-//     );
-//     if (!response.ok) {
-//       throw new Error(`HTTP Error! Status: ${response.status}`);
-//     }
-//     return await response.json(); // Return movie details
-//   } catch (error) {
-//     console.error("Error fetching movie details:", error);
-//     return null;
-//   }
-// };
-
-// Function to fetch movie details and trailer
 export const fetchMovieDetails = async (movieId) => {
   if (!movieId) {
     console.error("fetchMovieDetails: No movie ID provided.");

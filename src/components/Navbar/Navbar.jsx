@@ -49,7 +49,7 @@ export default function Navbar() {
               </li>
 
               <li className="actors">
-                <a href="">Actors</a>
+                <a href="/actors">Actors</a>
               </li>
               <li className="TVshows">
                 <a href="#" onClick={toggleDropdown("TVshows")}>

@@ -113,20 +113,6 @@ const Home = () => {
               ))}
             </ul>
 
-            {/* <ul className="movies-list">
-              {displayedMovies.map((movie) => (
-                <li key={movie.id} className="movie-item">
-                  <img
-                    className="movie-poster"
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                    style={{ width: "200px", borderRadius: "10px" }}
-                  />
-                  <p className="movie-title">{movie.title}</p>
-                  <p className="movie-releaseDate">{movie.release_date}</p>
-                </li>
-              ))}
-            </ul> */}
             <button
               className="scroll-button next"
               onClick={handleNext}

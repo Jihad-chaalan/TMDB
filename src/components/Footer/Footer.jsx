@@ -1,18 +1,22 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-10 px-4 flex flex-col items-center">
+    <footer>
       {/* Lottie Animation */}
-      <DotLottieReact
-        src="https://lottie.host/9f4257fb-9776-4fb0-9802-68fb1e2552ee/UtkZ84Q6Ix.lottie"
-        loop
-        autoplay
-        style={{ width: 120, height: 120 }}
-      />
+      <div>
+        <DotLottieReact
+          src="https://lottie.host/9f4257fb-9776-4fb0-9802-68fb1e2552ee/UtkZ84Q6Ix.lottie"
+          loop
+          autoplay
+          style={{ width: 120, height: 120 }}
+        />
+      </div>
 
       {/* TMDB Description */}
       <div className="text-center mt-4 max-w-md text-sm text-gray-400">
+        <h4>Thank you for visiting TMDB</h4>
         <p>
           This website uses the{" "}
           <a
@@ -31,12 +35,10 @@ const Footer = () => {
           This product is not endorsed or certified by TMDB. All data and images
           belong to their respective owners.
         </p>
+        <p className="text-xs text-gray-600 mt-6">
+          © {new Date().getFullYear()} All rights reserved.
+        </p>
       </div>
-
-      {/* Optional Copyright */}
-      <p className="text-xs text-gray-600 mt-6">
-        © {new Date().getFullYear()} YourWebsiteName. All rights reserved.
-      </p>
     </footer>
   );
 };

@@ -1,0 +1,59 @@
+.actor-container{
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+}
+.actor-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333; 
+  }
+  .actor-profile {
+    border-radius: 10px;
+  }
+  .personal-info {
+    background-color: #ffffff; 
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-top: 20px;
+    transition: transform 0.2s ease;
+  }
+  
+  .personal-info:hover {
+    transform: translateY(-2px); 
+  }
+  
+  .info-item {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    margin: 0;
+  }
+  .loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffff00;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      opacity: 0.4;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.4;
+    }
+  }
+  

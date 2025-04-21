@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { fetchPopularActor } from "../../util/API";
+import { useNavigate } from "react-router-dom";
 import "./Actors.css";
 
 const PopularActors = () => {
   const [actors, setActors] = useState([]);
   const [totalPages, setTotalPages] = useState(0);
   const [curentPage, setCurrentPage] = useState(1);
+  const navigate = useNavigate();
   useEffect(() => {
     window.scrollTo({ top: 100, behavior: "smooth" });
     const getActors = async () => {
@@ -20,7 +22,10 @@ const PopularActors = () => {
     getActors();
   }, [curentPage]);
 
-  console.log(totalPages);
+  const handleActorClick = (actorId) => {
+    navigate(`/actors/${actorId}`);
+    console.log(actorId);
+  };
 
   return (
     <>
@@ -28,7 +33,11 @@ const PopularActors = () => {
       <div className="actors-container">
         <ul className="actorsList">
           {actors.map((actor, index) => (
-            <li key={actor.id || index} className="actor-card">
+            <li
+              key={actor.id || index}
+              className="actor-card"
+              onClick={() => handleActorClick(actor.id)}
+            >
               <img
                 src={`https://image.tmdb.org/t/p/w300${actor.profile_path}`}
                 alt={actor.name}

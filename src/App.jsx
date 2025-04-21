@@ -5,6 +5,7 @@ import MovieDetails from "./pages/Movies/MovieDetails";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 import PopularActors from "./pages/Actors/Actors";
+import ActorDetails from "./pages/ActorDetails/ActorDetails";
 // import TestAPI from "./test";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/movie/:id" element={<MovieDetails />} />
         <Route path="/actors" element={<PopularActors />} />
+        <Route path="/actors/:id" element={<ActorDetails />} />
       </Routes>
       <Footer />
     </Router>

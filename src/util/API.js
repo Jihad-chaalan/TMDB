@@ -8,21 +8,47 @@ const options = {
   },
 };
 
-// export const fetchPopularActor = async () => {
-//   const url =
-//     "https://api.themoviedb.org/3/person/popular?language=en-US&page=1";
-//   try {
-//     const response = await fetch(url, options);
-//     if (!response.ok) {
-//       throw new Error(`HTTP error! Status: ${response.status}`);
-//     }
-//     const data = await response.json();
-//     return data.results;
-//   } catch (error) {
-//     console.error("Error fetching movies:", error);
-//     return [];
+// const url = 'https://api.themoviedb.org/3/person/125?language=en-US';
+// const options = {
+//   method: 'GET',
+//   headers: {
+//     accept: 'application/json',
+//     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhMzhhYWRkNWJjODA0NjljYTUzZDdkYWFmMTNjZmRiZCIsIm5iZiI6MTczOTY5MzQyMi4zNCwic3ViIjoiNjdiMTlkNmU4NWY1NzZlOTdkNmRiMmMxIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.i5b5QkCeIMIgt2zcjcl4qBDem118NypBZ7yEeSal-ss'
 //   }
 // };
+
+// fetch(url, options)
+//   .then(res => res.json())
+//   .then(json => console.log(json))
+//   .catch(err => console.error(err));
+
+export const fetchActorDetails = (ActorId) => {
+  if (!ActorId) {
+    console.error("fetchActorDetails: No Actor ID provided.");
+    return null;
+  }
+  const url = ` https://api.themoviedb.org/3/person/${ActorId}?language=en-US`;
+  // fetch(url, options)
+  //   .then((res) => res.json())
+  //   .then((json) => console.log(json))
+  //   .catch((err) => console.error(err));
+  return fetch(url, options)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .then((data) => {
+      console.log("Actor data:", data);
+      return data;
+    })
+    .catch((err) => {
+      console.error("Error fetching actor details:", err);
+      return null;
+    });
+};
+
 export const fetchPopularActor = async (page = 1) => {
   const url = `https://api.themoviedb.org/3/person/popular?language=en-US&page=${page}`;
 

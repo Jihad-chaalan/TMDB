@@ -1,6 +1,6 @@
 import "./Navbar.css";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { searchMulti } from "../../util/API";
 
 export default function Navbar() {
@@ -8,6 +8,7 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const location = useLocation(); // To monitor route changes
 
   const navigate = useNavigate();
 
@@ -36,6 +37,10 @@ export default function Navbar() {
 
     return () => clearTimeout(delayDebounce);
   }, [searchQuery]);
+
+  useEffect(() => {
+    setOpenDropdown(null); // Close dropdown on route change
+  }, [location]);
 
   // Handle click on suggestion item
   const handleSuggestionClick = (item) => {
@@ -69,18 +74,12 @@ export default function Navbar() {
                     : "DropDownMenu"
                 }
               >
-                <li>
-                  <a href="#">Now Playing</a>
+                <li onClick={() => navigate("/movies/now-playing")}>
+                  Now Playing
                 </li>
-                <li>
-                  <a href="#">Popular</a>
-                </li>
-                <li>
-                  <a href="#">Top Rated</a>
-                </li>
-                <li>
-                  <a href="#">Upcoming</a>
-                </li>
+                <li onClick={() => navigate("/movies/popular")}>Popular</li>
+                <li onClick={() => navigate("/movies/top-rated")}>Top Rated</li>
+                <li onClick={() => navigate("/movies/upcoming")}>Upcoming</li>
               </ul>
             </li>
 

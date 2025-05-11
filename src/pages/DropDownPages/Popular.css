@@ -1,0 +1,44 @@
+.popular-container {
+    padding: 2rem;
+    background-color: #121212;
+    color: #fff;
+    min-height: 100vh;
+  }
+  
+  /* .popular-container h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: #ffc107;
+  } */
+  
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  
+  .movie-card {
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+  }
+  
+  .movie-card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+  }
+  
+  .movie-card h3 {
+    margin: 0.5rem;
+    font-size: 1rem;
+  }
+  

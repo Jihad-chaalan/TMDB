@@ -8,6 +8,8 @@ const options = {
   },
 };
 
+const API_BASE = "https://api.themoviedb.org/3";
+
 // const url = 'https://api.themoviedb.org/3/person/125?language=en-US';
 // const options = {
 //   method: 'GET',
@@ -136,4 +138,45 @@ export const searchMulti = async (query) => {
     console.error("Error searching TMDB:", error);
     return [];
   }
+};
+
+export const fetchPopularMovies = () => {
+  return fetch(`${API_BASE}/movie/popular?language=en-US&page=1`, options)
+    .then((res) => res.json())
+    .then((data) => data.results || [])
+    .catch((err) => {
+      console.error("Error fetching popular movies:", err);
+      return [];
+    });
+};
+
+// You can similarly create these:
+export const fetchNowPlaying = () => {
+  return fetch(`${API_BASE}/movie/now_playing?language=en-US&page=1`, options)
+    .then((res) => res.json())
+    .then((data) => data.results || [])
+    .catch((err) => {
+      console.error("Error fetching now playing movies:", err);
+      return [];
+    });
+};
+
+export const fetchTopRated = () => {
+  return fetch(`${API_BASE}/movie/top_rated?language=en-US&page=1`, options)
+    .then((res) => res.json())
+    .then((data) => data.results || [])
+    .catch((err) => {
+      console.error("Error fetching top rated movies:", err);
+      return [];
+    });
+};
+
+export const fetchUpcoming = () => {
+  return fetch(`${API_BASE}/movie/upcoming?language=en-US&page=1`, options)
+    .then((res) => res.json())
+    .then((data) => data.results || [])
+    .catch((err) => {
+      console.error("Error fetching upcoming movies:", err);
+      return [];
+    });
 };

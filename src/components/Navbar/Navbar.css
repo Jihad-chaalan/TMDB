@@ -52,7 +52,7 @@ nav ul {
 
 nav ul li {
   position: relative;
-    margin: 2px;
+    /* margin: 2px; */
     display: flex;
     align-items: center;
     width: 100%;
@@ -130,19 +130,21 @@ nav ul li a:hover {
 /* Style dropdown items */
 .DropDownMenu li {
   padding: 8px 15px;
-  white-space: nowrap; /* Prevent text from wrapping */
+  width: 100%;
+  /* white-space: nowrap; Prevent text from wrapping */
 }
 
-.DropDownMenu li a {
+.DropDownMenu li  {
   color: white;
   text-decoration: none;
   display: block;
   transition: background-color 0.3s ease;
+  cursor: pointer; 
 }
 
-/* .DropDownMenu li:hover {
+.DropDownMenu li:hover {
   background-color: #555;
-} */
+}
 
 /* Show dropdown when hovering over "Movies" */
 /* .movies:hover .DropDownMenu {

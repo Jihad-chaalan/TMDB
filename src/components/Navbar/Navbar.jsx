@@ -1,92 +1,136 @@
 import "./Navbar.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { searchMulti } from "../../util/API";
 
 export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
 
   const navigate = useNavigate();
 
+  // Toggle dropdown visibility
   const toggleDropdown = (menu) => (e) => {
-    e.preventDefault(); // Prevent unwanted behavior
-    setOpenDropdown(openDropdown === menu ? null : menu); // Toggle only the clicked dropdown
+    e.preventDefault();
+    setOpenDropdown(openDropdown === menu ? null : menu);
+  };
+
+  // Fetch suggestions after user stops typing (debounced search)
+  useEffect(() => {
+    if (searchQuery.trim() === "") {
+      setSuggestions([]);
+      return;
+    }
+
+    const delayDebounce = setTimeout(() => {
+      searchMulti(searchQuery).then((results) => {
+        // Filter out TV shows from the suggestions
+        const filtered = results.filter(
+          (item) => item.media_type === "movie" || item.media_type === "person"
+        );
+        setSuggestions(filtered);
+      });
+    }, 400);
+
+    return () => clearTimeout(delayDebounce);
+  }, [searchQuery]);
+
+  // Handle click on suggestion item
+  const handleSuggestionClick = (item) => {
+    setSearchQuery("");
+    setShowSuggestions(false);
+
+    if (item.media_type === "movie") {
+      navigate(`/movie/${item.id}`);
+    } else if (item.media_type === "person") {
+      navigate(`/actors/${item.id}`);
+    }
   };
 
   return (
-    <>
-      <div className="container">
-        <div className="header-container" onClick={() => navigate("/")}>
-          <h1 className="header">DB Movies</h1>
-        </div>
-        <div className="nav-container">
-          <nav>
-            <ul>
-              <li className="movies">
-                <a href="#" onClick={toggleDropdown("movies")}>
-                  Movies ▼
-                </a>
-                {/* DropDown Menu */}
-                <ul
-                  className={
-                    openDropdown === "movies"
-                      ? "DropDownMenu open"
-                      : "DropDownMenu"
-                  }
-                >
-                  <li>
-                    <a href="">Now Playing</a>
-                  </li>
-                  <li>
-                    <a href="">Popular</a>
-                  </li>
-                  <li>
-                    <a href="">Top Rated</a>
-                  </li>
-                  <li>
-                    <a href="">Upcoming</a>
-                  </li>
-                </ul>
-              </li>
-
-              <li className="actors">
-                <a href="/actors">Actors</a>
-              </li>
-              <li className="TVshows">
-                <a href="#" onClick={toggleDropdown("TVshows")}>
-                  TV Shows ▼
-                </a>
-                {/*TVshows DropDown Menu */}
-                <ul
-                  className={
-                    openDropdown === "TVshows"
-                      ? "DropDownMenu open"
-                      : "DropDownMenu"
-                  }
-                >
-                  <li>
-                    <a href="">Airing Today</a>
-                  </li>
-                  <li>
-                    <a href="">On TV</a>
-                  </li>
-                  <li>
-                    <a href="">Popular</a>
-                  </li>
-                  <li>
-                    <a href="">Top Rated</a>
-                  </li>
-                </ul>
-              </li>
-              <li className="search-bar">
-                <form action="">
-                  <input type="text" placeholder="Search" />
-                  <button>Search</button>
-                </form>
-              </li>
-            </ul>
-          </nav>
-        </div>
+    <div className="container">
+      <div className="header-container" onClick={() => navigate("/")}>
+        <h1 className="header">DB Movies</h1>
       </div>
-    </>
+
+      <div className="nav-container">
+        <nav>
+          <ul>
+            <li className="movies">
+              <a href="#" onClick={toggleDropdown("movies")}>
+                Movies ▼
+              </a>
+              <ul
+                className={
+                  openDropdown === "movies"
+                    ? "DropDownMenu open"
+                    : "DropDownMenu"
+                }
+              >
+                <li>
+                  <a href="#">Now Playing</a>
+                </li>
+                <li>
+                  <a href="#">Popular</a>
+                </li>
+                <li>
+                  <a href="#">Top Rated</a>
+                </li>
+                <li>
+                  <a href="#">Upcoming</a>
+                </li>
+              </ul>
+            </li>
+
+            <li className="actors">
+              <a href="/actors">Actors</a>
+            </li>
+
+            <li className="search-bar" style={{ position: "relative" }}>
+              <form onSubmit={(e) => e.preventDefault()}>
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    setShowSuggestions(true);
+                  }}
+                  onBlur={() =>
+                    setTimeout(() => setShowSuggestions(false), 200)
+                  }
+                  onFocus={() => {
+                    if (suggestions.length > 0) setShowSuggestions(true);
+                  }}
+                />
+                <button type="submit">Go</button>
+              </form>
+
+              {showSuggestions && suggestions.length > 0 && (
+                <ul className="suggestion-box">
+                  {suggestions.map((item) => (
+                    <li
+                      key={item.id}
+                      onClick={() => handleSuggestionClick(item)}
+                    >
+                      {item.title || item.name}
+                      <span className="suggestion-type">
+                        {item.media_type === "movie"
+                          ? " (Movie)"
+                          : item.media_type === "person"
+                          ? " (Person)"
+                          : ""}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   );
 }

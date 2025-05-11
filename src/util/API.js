@@ -119,3 +119,21 @@ export const fetchMovieDetails = async (movieId) => {
     return null;
   }
 };
+
+export const searchMulti = async (query) => {
+  if (!query) return [];
+
+  const url = `https://api.themoviedb.org/3/search/multi?query=${encodeURIComponent(
+    query
+  )}&include_adult=false&language=en-US&page=1`;
+
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+    const data = await response.json();
+    return data.results.slice(0, 5); // return top 5 suggestions
+  } catch (error) {
+    console.error("Error searching TMDB:", error);
+    return [];
+  }
+};

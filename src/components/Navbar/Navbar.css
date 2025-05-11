@@ -46,7 +46,7 @@ nav ul {
   display: flex
 ;
   gap: 65px;
-  margin: 0;
+  margin: 0 0 0 100px;
   padding: 0;
 }
 
@@ -151,6 +151,52 @@ nav ul li a:hover {
  .DropDownMenu.open{
   display: block;
  }
+
+/* Suggestion dropdown for search */
+/* Suggestion container */
+.suggestion-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  border: 1px solid #444;
+  border-top: none;
+  list-style: none;
+  padding: 0;
+  margin: 2px 0 0;
+  z-index: 1000;
+  max-height: 250px;
+  overflow-y: auto;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  display: block; /* ensure vertical flow */
+}
+
+/* Suggestion items */
+.suggestion-box li {
+  display: block;  /* <-- make sure each item takes full width */
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+/* Hover effect */
+.suggestion-box li:hover {
+  background-color: #444;
+}
+
+/* Light grey type text */
+.suggestion-type {
+  color: #aaa;
+  font-size: 12px;
+  margin-left: 8px;
+}
+
+
 
 /* Responsive */
 @media (max-width: 768px) {

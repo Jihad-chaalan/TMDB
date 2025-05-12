@@ -56,4 +56,31 @@
       opacity: 0.4;
     }
   }
-  
+
+/* 🔁 Mobile-only responsive update */
+@media (max-width: 768px) {
+  .actor-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .actor-name {
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  .personal-info {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .info-item {
+    font-size: 0.95rem;
+  }
+
+  .actor-profile {
+    width: 100%;
+    max-width: 300px;
+  }
+}
